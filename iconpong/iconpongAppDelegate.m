@@ -3,7 +3,8 @@
 //  iconpong
 //
 //  Created by Salvatore Sanfilippo on 25/07/11.
-//  Copyright Salvatore Sanfilippo. All rights reserved.
+//  Forked by Alberto Roura on 20/08/17 (renamed to iconpong).
+//  Copyright Salvatore Sanfilippo and Contributors. All rights reserved.
 //
 
 #import "iconpongAppDelegate.h"
@@ -158,10 +159,6 @@ int64_t ustime(void) {
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    NSBundle *bundle = [NSBundle mainBundle];
-    /*
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerHandler:) userInfo:nil repeats:YES];
-     */
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
                                 [self methodSignatureForSelector:@selector(timerHandler:)]];
     [invocation setTarget:self];
@@ -169,7 +166,7 @@ int64_t ustime(void) {
     [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:0.05 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
 
     myMenu = [[NSMenu alloc] initWithTitle:@"Menu Title"];
-    quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Icon Ping" action:@selector(exitAction) keyEquivalent:@"q"];
+    quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit iconpong" action:@selector(exitAction) keyEquivalent:@"q"];
     [quitMenuItem setEnabled:YES];
 
     statusMenuItem = [[NSMenuItem alloc] initWithTitle:@"..." action:nil keyEquivalent:@""];
@@ -223,7 +220,6 @@ int64_t ustime(void) {
 
     /* Update the current state accordingly */
     elapsed = (ustime() - last_received_time)/1000; /* in milliseconds */
-    //NSLog(@"Ping took %d\n", (int)last_rtt);
     if (elapsed > 3000) {
         state = CONN_STATE_KO;
     } else {
@@ -236,38 +232,36 @@ int64_t ustime(void) {
 
 - (void) changeConnectionState: (int) state
 {
-    //NSLog(@"State change to %d\n", state);
     if (state == CONN_STATE_KO) {
         [myStatusItem setImage:pingError];
-        [statusMenuItem setTitle:@"No Connection!"];
     } else if (state <= 1) {
         [myStatusItem setImage:ping1];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 2) {
         [myStatusItem setImage:ping2];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 3) {
         [myStatusItem setImage:ping3];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 4) {
         [myStatusItem setImage:ping4];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 5) {
         [myStatusItem setImage:ping5];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 6) {
         [myStatusItem setImage:ping6];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 7) {
         [myStatusItem setImage:ping7];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 8) {
         [myStatusItem setImage:ping8];
-        [statusMenuItem setTitle:@"Connection OK"];
     } else if (state == 9) {
         [myStatusItem setImage:ping9];
-        [statusMenuItem setTitle:@"Connection OK"];
     }
+    
+    if (state == CONN_STATE_KO) {
+        [statusMenuItem setTitle:@"No Connection!"];
+    } else if (state <= 5) {
+        [statusMenuItem setTitle:@"Connection OK"];
+    } else if (state >= 5) {
+        [statusMenuItem setTitle:@"Connection SLOW"];
+    }
+    
     connection_state = state;
 }
 
@@ -289,8 +283,9 @@ int64_t ustime(void) {
 
  Copyright (c) 2010 Justin Williams, Second Gear
  Copyright (c) 2010 Salvatore Sanfilippo, antirez@gmail.com
+ Copyright (c) 2017 Alberto Roura, @roura356a
 
- The following code was adapted by Salvatore Sanfilippo for iconpong needs.
+ The following code was adapted by Salvatore Sanfilippo for iconping needs.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -380,7 +375,7 @@ int64_t ustime(void) {
 
 - (BOOL)toggleLoginItem {
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
-    BOOL retval;
+    BOOL retval = NO;
 
 	// Create a reference to the shared file list.
 	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
