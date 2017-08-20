@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,9 +33,7 @@
 		B6869BB013DD8DDE00F2D69B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B6869BAE13DD8DDE00F2D69B /* Credits.rtf */; };
 		B6869BB313DD8DDE00F2D69B /* iconpongAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6869BB213DD8DDE00F2D69B /* iconpongAppDelegate.m */; };
 		B6869BB613DD8DDE00F2D69B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6869BB413DD8DDE00F2D69B /* MainMenu.xib */; };
-		B6869BC113DDAEB500F2D69B /* iconslow.png in Resources */ = {isa = PBXBuildFile; fileRef = B6869BC013DDAEB500F2D69B /* iconslow.png */; };
-		B688E44813ED7C7A00D58F00 /* world_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B688E44713ED7C7A00D58F00 /* world_icon.png */; };
-		B688E44B13ED874400D58F00 /* world_icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B688E44A13ED874400D58F00 /* world_icon.icns */; };
+		D3A604571F49946500D3E1D2 /* iconpong.icns in Resources */ = {isa = PBXBuildFile; fileRef = D3A604561F49946500D3E1D2 /* iconpong.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,9 +70,7 @@
 		B6869BB113DD8DDE00F2D69B /* iconpongAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iconpongAppDelegate.h; sourceTree = "<group>"; };
 		B6869BB213DD8DDE00F2D69B /* iconpongAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iconpongAppDelegate.m; sourceTree = "<group>"; };
 		B6869BB513DD8DDE00F2D69B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		B6869BC013DDAEB500F2D69B /* iconslow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconslow.png; sourceTree = "<group>"; };
-		B688E44713ED7C7A00D58F00 /* world_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_icon.png; sourceTree = "<group>"; };
-		B688E44A13ED874400D58F00 /* world_icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = world_icon.icns; sourceTree = "<group>"; };
+		D3A604561F49946500D3E1D2 /* iconpong.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = iconpong.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,8 +88,7 @@
 		B6869B9013DD8DDD00F2D69B = {
 			isa = PBXGroup;
 			children = (
-				B688E44A13ED874400D58F00 /* world_icon.icns */,
-				B688E44713ED7C7A00D58F00 /* world_icon.png */,
+				D3A604561F49946500D3E1D2 /* iconpong.icns */,
 				B6869BA513DD8DDE00F2D69B /* iconpong */,
 				B6869B9E13DD8DDE00F2D69B /* Frameworks */,
 				B6869B9C13DD8DDE00F2D69B /* Products */,
@@ -161,7 +156,6 @@
 				83E571CB1C8E4ECB00891AFE /* ping_8.png */,
 				83E571CC1C8E4ECB00891AFE /* ping_9.png */,
 				83E571CD1C8E4ECB00891AFE /* ping_error.png */,
-				B6869BC013DDAEB500F2D69B /* iconslow.png */,
 				B6869BA713DD8DDE00F2D69B /* iconpong-Info.plist */,
 				B6869BA813DD8DDE00F2D69B /* InfoPlist.strings */,
 				B6869BAB13DD8DDE00F2D69B /* main.m */,
@@ -198,10 +192,10 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0830;
-				ORGANIZATIONNAME = "Kiurma s.r.l. / Merzia s.r.l.";
+				ORGANIZATIONNAME = "github community";
 			};
 			buildConfigurationList = B6869B9513DD8DDD00F2D69B /* Build configuration list for PBXProject "iconpong" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -227,6 +221,7 @@
 				839211691C8F8069002B802F /* ping_1@2x.png in Resources */,
 				8392117B1C8F8516002B802F /* ping_error@2x.png in Resources */,
 				B6869BAA13DD8DDE00F2D69B /* InfoPlist.strings in Resources */,
+				D3A604571F49946500D3E1D2 /* iconpong.icns in Resources */,
 				83E571D61C8E4ECB00891AFE /* ping_9.png in Resources */,
 				B6869BB013DD8DDE00F2D69B /* Credits.rtf in Resources */,
 				83E571D51C8E4ECB00891AFE /* ping_8.png in Resources */,
@@ -240,14 +235,11 @@
 				839211731C8F8516002B802F /* ping_8@2x.png in Resources */,
 				83E571CF1C8E4ECB00891AFE /* ping_2.png in Resources */,
 				839211751C8F8516002B802F /* ping_6@2x.png in Resources */,
-				B6869BC113DDAEB500F2D69B /* iconslow.png in Resources */,
 				839211791C8F8516002B802F /* ping_2@2x.png in Resources */,
-				B688E44813ED7C7A00D58F00 /* world_icon.png in Resources */,
 				839211771C8F8516002B802F /* ping_4@2x.png in Resources */,
 				83E571CE1C8E4ECB00891AFE /* ping_1.png in Resources */,
 				83E571D11C8E4ECB00891AFE /* ping_4.png in Resources */,
 				839211741C8F8516002B802F /* ping_7@2x.png in Resources */,
-				B688E44B13ED874400D58F00 /* world_icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,7 +365,7 @@
 				GCC_PREFIX_HEADER = "iconpong/iconpong-Prefix.pch";
 				INFOPLIST_FILE = "iconpong/iconpong-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.antirez.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roura356a.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
@@ -388,7 +380,7 @@
 				GCC_PREFIX_HEADER = "iconpong/iconpong-Prefix.pch";
 				INFOPLIST_FILE = "iconpong/iconpong-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.antirez.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.roura356a.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
