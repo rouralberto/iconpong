@@ -132,10 +132,10 @@ int64_t ustime(void) {
     int icmpoff;
     
     if (nread <= 0) return;
-    NSLog(@"Received ICMP %d bytes\n", (int)nread);
+    DLog(@"Received ICMP %d bytes\n", (int)nread);
     
     icmpoff = (packet[0]&0x0f)*4;
-    NSLog(@"ICMP offset: %d\n", icmpoff);
+    DLog(@"ICMP offset: %d\n", icmpoff);
     
     /* Don't process malformed packets. */
     if (nread < (icmpoff + (signed)sizeof(struct ICMPHeader))) return;
@@ -148,7 +148,7 @@ int64_t ustime(void) {
         return;
     }
     
-    NSLog(@"OK received an ICMP packet that matches.\n");
+    DLog(@"OK received an ICMP packet that matches.\n");
     if (reply->sentTime > last_received_time) {
         last_rtt = (int)(ustime()-reply->sentTime)/1000;
         last_received_time = reply->sentTime;
@@ -169,8 +169,8 @@ int64_t ustime(void) {
     [[NSRunLoop mainRunLoop] addTimer:[NSTimer timerWithTimeInterval:0.05 invocation:invocation repeats:YES] forMode:NSRunLoopCommonModes];
 
     myMenu = [[NSMenu alloc] initWithTitle:@"Menu Title"];
-    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Icon Ping" action:@selector(exitAction) keyEquivalent:@"q"];
-    [menuItem setEnabled:YES];
+    quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Icon Ping" action:@selector(exitAction) keyEquivalent:@"q"];
+    [quitMenuItem setEnabled:YES];
   
     statusMenuItem = [[NSMenuItem alloc] initWithTitle:@"..." action:nil keyEquivalent:@""];
     [statusMenuItem setEnabled:NO];
@@ -181,7 +181,7 @@ int64_t ustime(void) {
     
     [myMenu addItem: statusMenuItem];
     [myMenu addItem: openAtStartupMenuItem];
-    [myMenu addItem: menuItem];
+    [myMenu addItem: quitMenuItem];
 
     myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
     
@@ -215,7 +215,7 @@ int64_t ustime(void) {
     
     clicks++;
     if ((clicks % 10) == 0) {
-        NSLog(@"Sending ping\n");
+        DLog(@"Sending ping\n");
         
         [self sendPingwithId:icmp_id andSeq: icmp_seq];
     }
@@ -375,13 +375,13 @@ int64_t ustime(void) {
 		retval = YES;
 	}
 	CFRelease(loginItems);
-    return retval;
+    return retval = NO;
 }
 
 - (BOOL)toggleLoginItem {
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
     BOOL retval;
-	
+
 	// Create a reference to the shared file list.
 	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
 	if (loginItems) {
@@ -392,8 +392,8 @@ int64_t ustime(void) {
 			[self disableLoginItemWithLoginItemsReference:loginItems ForPath:appPath];
             retval = NO;
         }
+      CFRelease(loginItems);
 	}
-	CFRelease(loginItems);
     return retval;
 }
 
