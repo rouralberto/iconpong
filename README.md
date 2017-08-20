@@ -1,4 +1,4 @@
-# iconpong [former iconping](https://github.com/antirez/iconping)
+# iconpong ([former iconping](https://github.com/antirez/iconping))
 
 Visual ping macOS menubar app for continuously monitor internet connection.
 
