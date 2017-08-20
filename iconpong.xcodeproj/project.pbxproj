@@ -31,7 +31,7 @@
 		B6869BAA13DD8DDE00F2D69B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6869BA813DD8DDE00F2D69B /* InfoPlist.strings */; };
 		B6869BAC13DD8DDE00F2D69B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6869BAB13DD8DDE00F2D69B /* main.m */; };
 		B6869BB013DD8DDE00F2D69B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B6869BAE13DD8DDE00F2D69B /* Credits.rtf */; };
-		B6869BB313DD8DDE00F2D69B /* iconpingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6869BB213DD8DDE00F2D69B /* iconpingAppDelegate.m */; };
+		B6869BB313DD8DDE00F2D69B /* iconpongAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6869BB213DD8DDE00F2D69B /* iconpongAppDelegate.m */; };
 		B6869BB613DD8DDE00F2D69B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6869BB413DD8DDE00F2D69B /* MainMenu.xib */; };
 		B6869BC113DDAEB500F2D69B /* iconslow.png in Resources */ = {isa = PBXBuildFile; fileRef = B6869BC013DDAEB500F2D69B /* iconslow.png */; };
 		B688E44813ED7C7A00D58F00 /* world_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B688E44713ED7C7A00D58F00 /* world_icon.png */; };
@@ -59,18 +59,18 @@
 		83E571CB1C8E4ECB00891AFE /* ping_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ping_8.png; sourceTree = "<group>"; };
 		83E571CC1C8E4ECB00891AFE /* ping_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ping_9.png; sourceTree = "<group>"; };
 		83E571CD1C8E4ECB00891AFE /* ping_error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ping_error.png; sourceTree = "<group>"; };
-		B6869B9B13DD8DDE00F2D69B /* iconping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iconping.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6869B9B13DD8DDE00F2D69B /* iconpong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iconpong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6869B9F13DD8DDE00F2D69B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B6869BA213DD8DDE00F2D69B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		B6869BA313DD8DDE00F2D69B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		B6869BA413DD8DDE00F2D69B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		B6869BA713DD8DDE00F2D69B /* iconping-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iconping-Info.plist"; sourceTree = "<group>"; };
+		B6869BA713DD8DDE00F2D69B /* iconpong-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iconpong-Info.plist"; sourceTree = "<group>"; };
 		B6869BA913DD8DDE00F2D69B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B6869BAB13DD8DDE00F2D69B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B6869BAD13DD8DDE00F2D69B /* iconping-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iconping-Prefix.pch"; sourceTree = "<group>"; };
+		B6869BAD13DD8DDE00F2D69B /* iconpong-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iconpong-Prefix.pch"; sourceTree = "<group>"; };
 		B6869BAF13DD8DDE00F2D69B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		B6869BB113DD8DDE00F2D69B /* iconpingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iconpingAppDelegate.h; sourceTree = "<group>"; };
-		B6869BB213DD8DDE00F2D69B /* iconpingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iconpingAppDelegate.m; sourceTree = "<group>"; };
+		B6869BB113DD8DDE00F2D69B /* iconpongAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iconpongAppDelegate.h; sourceTree = "<group>"; };
+		B6869BB213DD8DDE00F2D69B /* iconpongAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iconpongAppDelegate.m; sourceTree = "<group>"; };
 		B6869BB513DD8DDE00F2D69B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B6869BC013DDAEB500F2D69B /* iconslow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconslow.png; sourceTree = "<group>"; };
 		B688E44713ED7C7A00D58F00 /* world_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_icon.png; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 			children = (
 				B688E44A13ED874400D58F00 /* world_icon.icns */,
 				B688E44713ED7C7A00D58F00 /* world_icon.png */,
-				B6869BA513DD8DDE00F2D69B /* iconping */,
+				B6869BA513DD8DDE00F2D69B /* iconpong */,
 				B6869B9E13DD8DDE00F2D69B /* Frameworks */,
 				B6869B9C13DD8DDE00F2D69B /* Products */,
 			);
@@ -103,7 +103,7 @@
 		B6869B9C13DD8DDE00F2D69B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B6869B9B13DD8DDE00F2D69B /* iconping.app */,
+				B6869B9B13DD8DDE00F2D69B /* iconpong.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,15 +127,15 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		B6869BA513DD8DDE00F2D69B /* iconping */ = {
+		B6869BA513DD8DDE00F2D69B /* iconpong */ = {
 			isa = PBXGroup;
 			children = (
-				B6869BB113DD8DDE00F2D69B /* iconpingAppDelegate.h */,
-				B6869BB213DD8DDE00F2D69B /* iconpingAppDelegate.m */,
+				B6869BB113DD8DDE00F2D69B /* iconpongAppDelegate.h */,
+				B6869BB213DD8DDE00F2D69B /* iconpongAppDelegate.m */,
 				B6869BB413DD8DDE00F2D69B /* MainMenu.xib */,
 				B6869BA613DD8DDE00F2D69B /* Supporting Files */,
 			);
-			path = iconping;
+			path = iconpong;
 			sourceTree = "<group>";
 		};
 		B6869BA613DD8DDE00F2D69B /* Supporting Files */ = {
@@ -162,10 +162,10 @@
 				83E571CC1C8E4ECB00891AFE /* ping_9.png */,
 				83E571CD1C8E4ECB00891AFE /* ping_error.png */,
 				B6869BC013DDAEB500F2D69B /* iconslow.png */,
-				B6869BA713DD8DDE00F2D69B /* iconping-Info.plist */,
+				B6869BA713DD8DDE00F2D69B /* iconpong-Info.plist */,
 				B6869BA813DD8DDE00F2D69B /* InfoPlist.strings */,
 				B6869BAB13DD8DDE00F2D69B /* main.m */,
-				B6869BAD13DD8DDE00F2D69B /* iconping-Prefix.pch */,
+				B6869BAD13DD8DDE00F2D69B /* iconpong-Prefix.pch */,
 				B6869BAE13DD8DDE00F2D69B /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -174,9 +174,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B6869B9A13DD8DDE00F2D69B /* iconping */ = {
+		B6869B9A13DD8DDE00F2D69B /* iconpong */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B6869BB913DD8DDE00F2D69B /* Build configuration list for PBXNativeTarget "iconping" */;
+			buildConfigurationList = B6869BB913DD8DDE00F2D69B /* Build configuration list for PBXNativeTarget "iconpong" */;
 			buildPhases = (
 				B6869B9713DD8DDE00F2D69B /* Sources */,
 				B6869B9813DD8DDE00F2D69B /* Frameworks */,
@@ -186,9 +186,9 @@
 			);
 			dependencies = (
 			);
-			name = iconping;
-			productName = iconping;
-			productReference = B6869B9B13DD8DDE00F2D69B /* iconping.app */;
+			name = iconpong;
+			productName = iconpong;
+			productReference = B6869B9B13DD8DDE00F2D69B /* iconpong.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -200,7 +200,7 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Kiurma s.r.l. / Merzia s.r.l.";
 			};
-			buildConfigurationList = B6869B9513DD8DDD00F2D69B /* Build configuration list for PBXProject "iconping" */;
+			buildConfigurationList = B6869B9513DD8DDD00F2D69B /* Build configuration list for PBXProject "iconpong" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -212,7 +212,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B6869B9A13DD8DDE00F2D69B /* iconping */,
+				B6869B9A13DD8DDE00F2D69B /* iconpong */,
 			);
 		};
 /* End PBXProject section */
@@ -259,7 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6869BAC13DD8DDE00F2D69B /* main.m in Sources */,
-				B6869BB313DD8DDE00F2D69B /* iconpingAppDelegate.m in Sources */,
+				B6869BB313DD8DDE00F2D69B /* iconpongAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,8 +370,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iconping/iconping-Prefix.pch";
-				INFOPLIST_FILE = "iconping/iconping-Info.plist";
+				GCC_PREFIX_HEADER = "iconpong/iconpong-Prefix.pch";
+				INFOPLIST_FILE = "iconpong/iconpong-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.antirez.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -385,8 +385,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iconping/iconping-Prefix.pch";
-				INFOPLIST_FILE = "iconping/iconping-Info.plist";
+				GCC_PREFIX_HEADER = "iconpong/iconpong-Prefix.pch";
+				INFOPLIST_FILE = "iconpong/iconpong-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.antirez.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -398,7 +398,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B6869B9513DD8DDD00F2D69B /* Build configuration list for PBXProject "iconping" */ = {
+		B6869B9513DD8DDD00F2D69B /* Build configuration list for PBXProject "iconpong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B6869BB713DD8DDE00F2D69B /* Debug */,
@@ -407,7 +407,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B6869BB913DD8DDE00F2D69B /* Build configuration list for PBXNativeTarget "iconping" */ = {
+		B6869BB913DD8DDE00F2D69B /* Build configuration list for PBXNativeTarget "iconpong" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B6869BBA13DD8DDE00F2D69B /* Debug */,

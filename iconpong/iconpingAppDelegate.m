@@ -1,12 +1,12 @@
 //
-//  iconpingAppDelegate.m
-//  iconping
+//  iconpongAppDelegate.m
+//  iconpong
 //
 //  Created by Salvatore Sanfilippo on 25/07/11.
 //  Copyright Salvatore Sanfilippo. All rights reserved.
 //
 
-#import "iconpingAppDelegate.h"
+#import "iconpongAppDelegate.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 
-@implementation iconpingAppDelegate
+@implementation iconpongAppDelegate
 
 @synthesize window;
 
@@ -46,11 +46,11 @@ static uint16_t in_cksum(const void *buffer, size_t bufferLen)
         uint8_t         uc[2];
     } last;
     uint16_t            answer;
-    
+
     bytesLeft = bufferLen;
     sum = 0;
     cursor = buffer;
-    
+
     /*
      * Our algorithm is simple, using a 32 bit accumulator (sum), we add
      * sequential 16 bit words to it, and at the end, fold back all the
@@ -67,18 +67,18 @@ static uint16_t in_cksum(const void *buffer, size_t bufferLen)
         last.uc[1] = 0;
         sum += last.us;
     }
-    
+
     /* add back carry outs from top 16 bits to low 16 bits */
     sum = (sum >> 16) + (sum & 0xffff);     /* add hi 16 to low 16 */
     sum += (sum >> 16);                     /* add carry */
     answer = ~sum;                          /* truncate to 16 bits */
-    
+
     return answer;
 }
 
 int setSocketNonBlocking(int fd) {
     int flags;
-    
+
     /* Set the socket nonblocking.
      * Note that fcntl(2) for F_GETFL and F_SETFL can't be
      * interrupted by a signal. */
@@ -91,7 +91,7 @@ int setSocketNonBlocking(int fd) {
 int64_t ustime(void) {
     struct timeval tv;
     long long ust;
-    
+
     gettimeofday(&tv, NULL);
     ust = ((int64_t)tv.tv_sec)*1000000;
     ust += tv.tv_usec;
@@ -100,15 +100,15 @@ int64_t ustime(void) {
 
 - (void) sendPingwithId: (int) identifier andSeq: (int) seq {
     if (icmp_socket != -1) close(icmp_socket);
-    
+
     int s = icmp_socket = socket(AF_INET, SOCK_DGRAM, IPPROTO_ICMP);
     struct sockaddr_in sa;
     struct ICMPHeader icmp;
-    
+
     if (s == -1) return;
     inet_aton("8.8.8.8", &sa.sin_addr);
     setSocketNonBlocking(s);
-    
+
     /* Note that we create always a new socket, with a different identifier
      * and sequence number. This is to avoid to read old replies to our ICMP
      * request, and to be sure that even in the case the user changes
@@ -118,9 +118,9 @@ int64_t ustime(void) {
     icmp.checksum = 0;
     icmp.identifier = identifier;
     icmp.sequenceNumber = seq;
-    icmp.sentTime = ustime();   
+    icmp.sentTime = ustime();
     icmp.checksum = in_cksum(&icmp,sizeof(icmp));
-    
+
     sendto(s,&icmp,sizeof(icmp),0,(struct sockaddr*)&sa,sizeof(sa));
  }
 
@@ -130,24 +130,24 @@ int64_t ustime(void) {
     int s = icmp_socket;
     ssize_t nread = read(s,packet,sizeof(packet));
     int icmpoff;
-    
+
     if (nread <= 0) return;
     DLog(@"Received ICMP %d bytes\n", (int)nread);
-    
+
     icmpoff = (packet[0]&0x0f)*4;
     DLog(@"ICMP offset: %d\n", icmpoff);
-    
+
     /* Don't process malformed packets. */
     if (nread < (icmpoff + (signed)sizeof(struct ICMPHeader))) return;
     reply = (struct ICMPHeader*) (packet+icmpoff);
-    
+
     /* Make sure that identifier and sequence match */
     if (reply->identifier != icmp_id ||
         reply->sequenceNumber != icmp_seq)
     {
         return;
     }
-    
+
     DLog(@"OK received an ICMP packet that matches.\n");
     if (reply->sentTime > last_received_time) {
         last_rtt = (int)(ustime()-reply->sentTime)/1000;
@@ -171,20 +171,20 @@ int64_t ustime(void) {
     myMenu = [[NSMenu alloc] initWithTitle:@"Menu Title"];
     quitMenuItem = [[NSMenuItem alloc] initWithTitle:@"Quit Icon Ping" action:@selector(exitAction) keyEquivalent:@"q"];
     [quitMenuItem setEnabled:YES];
-  
+
     statusMenuItem = [[NSMenuItem alloc] initWithTitle:@"..." action:nil keyEquivalent:@""];
     [statusMenuItem setEnabled:NO];
-    
+
     openAtStartupMenuItem = [[NSMenuItem alloc] initWithTitle:@"Open at startup" action:@selector(toggleStartupAction) keyEquivalent:@""];
     [openAtStartupMenuItem setEnabled:YES];
     if ([self loginItemExists]) [openAtStartupMenuItem setState:NSOnState];
-    
+
     [myMenu addItem: statusMenuItem];
     [myMenu addItem: openAtStartupMenuItem];
     [myMenu addItem: quitMenuItem];
 
     myStatusItem = [[[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength] retain];
-    
+
     ping1 = [NSImage imageNamed:@"ping_1"];
     ping2 = [NSImage imageNamed:@"ping_2"];
     ping3 = [NSImage imageNamed:@"ping_3"];
@@ -199,7 +199,7 @@ int64_t ustime(void) {
     [myStatusItem setImage:pingError];
     [myStatusItem setMenu: myMenu];
     [self changeConnectionState: CONN_STATE_KO];
-    
+
     icmp_socket = -1;
     last_received_time = 0;
     last_rtt = 0;
@@ -212,15 +212,15 @@ int64_t ustime(void) {
     static long clicks = -1;
     int state;
     int64_t elapsed;
-    
+
     clicks++;
     if ((clicks % 10) == 0) {
         DLog(@"Sending ping\n");
-        
+
         [self sendPingwithId:icmp_id andSeq: icmp_seq];
     }
     [self receivePing];
-    
+
     /* Update the current state accordingly */
     elapsed = (ustime() - last_received_time)/1000; /* in milliseconds */
     //NSLog(@"Ping took %d\n", (int)last_rtt);
@@ -284,24 +284,24 @@ int64_t ustime(void) {
 }
 
 /*
- 
+
  The MIT License
 
  Copyright (c) 2010 Justin Williams, Second Gear
  Copyright (c) 2010 Salvatore Sanfilippo, antirez@gmail.com
 
- The following code was adapted by Salvatore Sanfilippo for iconping needs.
- 
+ The following code was adapted by Salvatore Sanfilippo for iconpong needs.
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in
  all copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -309,14 +309,14 @@ int64_t ustime(void) {
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
- 
+
  */
 
 
 - (void)enableLoginItemWithLoginItemsReference:(LSSharedFileListRef )theLoginItemsRefs ForPath:(NSString *)appPath {
 	// We call LSSharedFileListInsertItemURL to insert the item at the bottom of Login Items list.
 	CFURLRef url = (CFURLRef)[NSURL fileURLWithPath:appPath];
-	LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(theLoginItemsRefs, kLSSharedFileListItemLast, NULL, NULL, url, NULL, NULL);		
+	LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(theLoginItemsRefs, kLSSharedFileListItemLast, NULL, NULL, url, NULL, NULL);
 	if (item)
 		CFRelease(item);
 }
@@ -327,27 +327,27 @@ int64_t ustime(void) {
 	// We're going to grab the contents of the shared file list (LSSharedFileListItemRef objects)
 	// and pop it in an array so we can iterate through it to find our item.
 	CFArrayRef loginItemsArray = LSSharedFileListCopySnapshot(theLoginItemsRefs, &seedValue);
-	for (id item in (NSArray *)loginItemsArray) {		
+	for (id item in (NSArray *)loginItemsArray) {
 		LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
 		if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &thePath, NULL) == noErr) {
 			if ([[(NSURL *)thePath path] hasPrefix:appPath]) {
 				LSSharedFileListItemRemove(theLoginItemsRefs, itemRef); // Deleting the item
 			}
 			CFRelease(thePath);
-		}		
+		}
 	}
 	CFRelease(loginItemsArray);
 }
 
 - (BOOL)loginItemExistsWithLoginItemReference:(LSSharedFileListRef)theLoginItemsRefs ForPath:(NSString *)appPath {
-	BOOL found = NO;  
+	BOOL found = NO;
 	UInt32 seedValue;
 	CFURLRef thePath;
-	
+
 	// We're going to grab the contents of the shared file list (LSSharedFileListItemRef objects)
 	// and pop it in an array so we can iterate through it to find our item.
 	CFArrayRef loginItemsArray = LSSharedFileListCopySnapshot(theLoginItemsRefs, &seedValue);
-	for (id item in (NSArray *)loginItemsArray) {    
+	for (id item in (NSArray *)loginItemsArray) {
 		LSSharedFileListItemRef itemRef = (LSSharedFileListItemRef)item;
 		if (LSSharedFileListItemResolve(itemRef, 0, (CFURLRef*) &thePath, NULL) == noErr) {
 			if ([[(NSURL *)thePath path] hasPrefix:appPath]) {
@@ -360,7 +360,7 @@ int64_t ustime(void) {
 		}
 	}
 	CFRelease(loginItemsArray);
-	
+
 	return found;
 }
 
@@ -369,7 +369,7 @@ int64_t ustime(void) {
 	// For example, /Applications/test.app
 	NSString * appPath = [[NSBundle mainBundle] bundlePath];
     BOOL retval = NO;
-    
+
 	LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
 	if ([self loginItemExistsWithLoginItemReference:loginItems ForPath:appPath]) {
 		retval = YES;

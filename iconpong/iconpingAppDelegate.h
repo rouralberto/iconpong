@@ -1,6 +1,6 @@
 //
-//  iconpingAppDelegate.h
-//  iconping
+//  iconpongAppDelegate.h
+//  iconpong
 //
 //  Created by Salvatore Sanfilippo on 25/07/11.
 //  Copyright 2011 Salvatore Sanfilippo. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface iconpingAppDelegate : NSObject <NSApplicationDelegate> {
+@interface iconpongAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
     NSStatusItem *myStatusItem;
     NSImage *ping1, *ping2, *ping3, *ping4, *ping5, *ping6, *ping7, *ping8, *ping9, *pingError;

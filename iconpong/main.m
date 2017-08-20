@@ -1,6 +1,6 @@
 //
 //  main.m
-//  iconping
+//  iconpong
 //
 //  Created by Salvatore Sanfilippo on 25/07/11.
 //  Copyright 2011 Salvatore Sanfilippo. All rights reserved.
