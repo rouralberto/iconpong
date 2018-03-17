@@ -15,3 +15,6 @@ I also merged [Pull Request #1](https://github.com/antirez/iconping/pull/1), so 
 Of course I’m more than willing to accept more issues and pull requests, so be welcomed to push some code!
 
 This fork started including the ignored pull requests from [@gray](https://github.com/gray) and [@nicpottier](https://github.com/nicpottier).
+
+## What the icon dots means
+The icon is meant to be a domino, between 1-9 representing the ping time. That tells you at a quick glance whether ping times are ~<100ms or ~300ms or ~700ms or something greater (in which case it shows an exclamation mark).
